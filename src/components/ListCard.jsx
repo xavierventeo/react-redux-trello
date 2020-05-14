@@ -1,5 +1,5 @@
 import React from 'react';
-import './ListCard.css';
+import './../css/ListCard.css';
 
 const ListCard = () => {
   return (

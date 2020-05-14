@@ -1,5 +1,5 @@
 import React from 'react';
-import './List.css';
+import './../css/List.css';
 import ListCard from './ListCard.jsx';
 
 const List = ({title}) => {
