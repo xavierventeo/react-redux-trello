@@ -9,9 +9,6 @@ import ListCard from './ListCard.jsx';
 const List = (props) => {
   return (
     <div className="lists">
-      
-      { console.log(props.lists) }
-
       { (props.lists).map( (list) => (
           <Card key= { list.id }>
             <Card.Header>{ list.title }</Card.Header>
@@ -24,8 +21,8 @@ const List = (props) => {
               <Button variant="primary">Add Card</Button>{' '}
             </Card.Body>
           </Card>
-
       ))}
+      <Button variant="primary">Add List</Button>{' '}
     </div>
   );
 }
