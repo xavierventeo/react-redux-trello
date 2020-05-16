@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import './../css/ListCard.css';
 import Button from 'react-bootstrap/Button';
 
 const AddListCard = (props) => {
-    let isFormOpen = false;
+    const [formOpen, setFormOpen] = useState(false);
 
     const openForm = () => {
-        isFormOpen = true;
+        setFormOpen(true);
     }
 
     const renderAddButton = () => {
@@ -17,7 +17,7 @@ const AddListCard = (props) => {
         return 'hello';
     };
 
-    return isFormOpen ? renderFormAddCard() : renderAddButton();
+    return formOpen ? renderFormAddCard() : renderAddButton();
 }
 
 export default AddListCard;
