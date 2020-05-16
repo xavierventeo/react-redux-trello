@@ -14,11 +14,9 @@ const List = (props) => {
           <Card key= { list.id }>
             <Card.Header>{ list.title }</Card.Header>
             <Card.Body id="cards">
-              <Card.Text>
-                { (list.cards).map( (card) => (
-                  <ListCard key={card.id} card={card}/>
-                ))}
-              </Card.Text>
+              { (list.cards).map( (card) => (
+                <ListCard key={card.id} card={card}/>
+              ))}
             </Card.Body>
             <AddListCard/>
           </Card>

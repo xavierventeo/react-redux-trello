@@ -3,7 +3,6 @@ import './../css/ListCard.css';
 import Card from 'react-bootstrap/Card';
 
 const ListCard = ( {card} ) => {
-  console.log('card: ' + card.text);
   return (
     <Card key= { card.id } className="bg-light">
       { card.text }
