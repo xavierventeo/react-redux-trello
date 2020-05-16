@@ -1,11 +1,10 @@
 import React from 'react';
 import './../css/ListCard.css';
 
-const ListCard = () => {
+const ListCard = ( {card} ) => {
+  console.log('card: ' + card.text);
   return (
-    <div className="list-card">
-      <p>Card 1</p>
-    </div>
+    <div key={ card.id } class="card"> { card.text }</div>
   );
 }
 

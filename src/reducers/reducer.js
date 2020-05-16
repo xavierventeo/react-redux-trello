@@ -1,26 +1,42 @@
 const initialState = {
-    visibility: 'ALL',
-    todos:[
+  lists:[
+    {
+      id: 0,
+      title: "Pending",
+      cards:[
         {
-            text: 'tarea demo 1',
-            id: 1,
-            completed: true,
-          },
-          {
-            text: 'tarea demo 2',
-            id: 2,
-            completed: false,
-          },
-          {
-            text: 'tarea demo 3',
-            id: 3,
-            completed: false,
-          },      
-    ]
-}
+          id: 1,
+          text: 'tarea demo 1',
+        },
+        {
+          id: 2,
+          text: 'tarea demo 2',
+        },  
+      ]    
+    },
+    {
+      id: 1,
+      title: "In Progress",
+      cards:[
+        {
+          id: 3,
+          text: 'tarea demo 3',
+        },      
+      ]    
+    },
+    {
+      id: 3,
+      title: "Done",
+      cards:[]    
+    },      
+  ]
+};
     
-function reducer(state = initialState, action) {
-    return state;
+function reducerList(state = initialState, action) {
+    switch (action.type) {
+      default:
+          return state;
+    }
 }
 
-export default reducer;
+export default reducerList;
