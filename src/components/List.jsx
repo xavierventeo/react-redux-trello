@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import './../css/List.css';
+import ListCard from './ListCard.jsx';
 
 const List = (props) => {
   return (
@@ -12,7 +13,7 @@ const List = (props) => {
           <div key={ list.id } id="list">{ list.title }
             <div id="cards">
               { (list.cards).map( (card) => (
-                <div key={ card.id } > { card.text }</div>
+                <ListCard key={card.id} card={card}/>
               ))}
             </div>
           </div>
