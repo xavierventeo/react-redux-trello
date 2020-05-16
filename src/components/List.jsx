@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 
 import Button from 'react-bootstrap/Button';
 import ListCard from './ListCard.jsx';
+import AddListCard from './AddListCard.jsx';
 
 const List = (props) => {
   return (
@@ -18,8 +19,8 @@ const List = (props) => {
                   <ListCard key={card.id} card={card}/>
                 ))}
               </Card.Text>
-              <Button variant="primary">Add Card</Button>{' '}
             </Card.Body>
+            <AddListCard/>
           </Card>
       ))}
       <Button variant="primary">Add List</Button>{' '}
