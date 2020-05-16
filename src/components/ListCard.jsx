@@ -4,7 +4,7 @@ import './../css/ListCard.css';
 const ListCard = ( {card} ) => {
   console.log('card: ' + card.text);
   return (
-    <div key={ card.id } > { card.text }</div>
+    <div key={ card.id } class="card"> { card.text }</div>
   );
 }
 

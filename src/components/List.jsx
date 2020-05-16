@@ -10,8 +10,8 @@ const List = (props) => {
       { console.log(props.lists) }
 
       { (props.lists).map( (list) => (
-          <div key={ list.id } id="list">{ list.title }
-            <div id="cards">
+          <div key={ list.id } id="list" class="list">{ list.title }
+            <div id="cards" class="cards">
               { (list.cards).map( (card) => (
                 <ListCard key={card.id} card={card}/>
               ))}
