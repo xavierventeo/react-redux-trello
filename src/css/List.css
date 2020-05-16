@@ -1,5 +1,7 @@
 .lists {
     display: flex;
-    flex-direction: columns;
+    flex-direction: row;
 }
-
+.lists .card {
+    margin-right: 1em;
+}
