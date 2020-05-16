@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 
 const App = () => {
   return (
-    <Container>
+    <Container fluid>
       <h1>Hello Trello</h1>
       <List/>
     </Container>
