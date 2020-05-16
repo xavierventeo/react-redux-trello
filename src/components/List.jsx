@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import './../css/List.css';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
 import ListCard from './ListCard.jsx';
 
 const List = (props) => {
@@ -10,13 +12,17 @@ const List = (props) => {
       { console.log(props.lists) }
 
       { (props.lists).map( (list) => (
-          <div key={ list.id } id="list" class="list">{ list.title }
-            <div id="cards" class="cards">
+          <Jumbotron key= { list.id }>
+            { list.title }
+            <div id="cards" className="cards">
               { (list.cards).map( (card) => (
                 <ListCard key={card.id} card={card}/>
               ))}
             </div>
-          </div>
+            <Button variant="primary">Add Card</Button>{' '}
+
+          </Jumbotron>
+
       ))}
     </div>
   );

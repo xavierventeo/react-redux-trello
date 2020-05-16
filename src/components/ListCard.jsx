@@ -1,10 +1,13 @@
 import React from 'react';
 import './../css/ListCard.css';
+import Toast from 'react-bootstrap/Toast';
 
 const ListCard = ( {card} ) => {
   console.log('card: ' + card.text);
   return (
-    <div key={ card.id } class="card"> { card.text }</div>
+    <Toast key= { card.id }>
+      { card.text }
+    </Toast>
   );
 }
 
