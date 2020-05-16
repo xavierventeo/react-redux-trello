@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Hello Trello</h1>
-      <List title='List 1'/>
+      <List/>
     </div>
   );
 }
