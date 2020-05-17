@@ -42,7 +42,7 @@ function reducerList(state = initialState, action) {
               ...state.lists,
               {
                 id: Date.now(),
-                title: action.payload.title,
+                title: action.payload,
                 cards: []
               }
           ]
