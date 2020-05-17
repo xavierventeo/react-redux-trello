@@ -20,13 +20,13 @@ const AddListCard = ({ text }) => {
 
     const renderFormAddCard = (text) => {
         return (
-            <Container>
-                <textarea className="form-control" id="newCard" rows="2"></textarea>
+            <div>
+                <textarea className="form-control" id="newCard" rows="2" cols="20"></textarea>
                     <Button variant="success" size="sm" onClick={openForm}>Añadir {text}</Button>
                 <button type="button" className="close" aria-label="Close" onClick={closeForm}>
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </Container>
+            </div>
         )
     };
 
