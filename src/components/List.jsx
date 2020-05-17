@@ -12,13 +12,17 @@ const List = (props) => {
     <div className="lists">
       { (props.lists).map( (list) => (
           <Card key= { list.id }>
-            <Card.Header>{ list.title }</Card.Header>
+            <Card.Header>
+              <Card.Title>{ list.title }</Card.Title>
+            </Card.Header>
             <Card.Body id="cards">
               { (list.cards).map( (card) => (
                 <ListCard key={card.id} card={card}/>
               ))}
             </Card.Body>
-            <AddListCard/>
+            <Card.Footer>
+              <AddListCard/>
+            </Card.Footer>
           </Card>
       ))}
       <Button variant="primary">Add List</Button>{' '}

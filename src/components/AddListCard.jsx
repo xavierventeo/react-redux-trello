@@ -1,23 +1,36 @@
-import React from 'react';
-import './../css/ListCard.css';
+import React, {useState}  from 'react';
+import './../css/AddListCard.css';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 const AddListCard = (props) => {
-    let isFormOpen = false;
+    const [formOpen, setFormOpen] = useState(false);
 
     const openForm = () => {
-        isFormOpen = true;
+        setFormOpen(true);
+    }
+
+    const closeForm = () => {
+        setFormOpen(false);
     }
 
     const renderAddButton = () => {
-        return <Button variant="primary" onClick={openForm}>Añada otra tarjeta</Button>;
+        return <span onClick={openForm}>+ Añade otra tarjeta</span>
     };
 
     const renderFormAddCard = () => {
-        return 'hello';
+        return (
+            <Container>
+                <textarea class="form-control" id="newCard" rows="2"></textarea>
+                <Button variant="success" size="sm" onClick={openForm}>Añadir tarjeta</Button>
+                <button type="button" class="close" aria-label="Close" onClick={closeForm}>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </Container>
+        )
     };
 
-    return isFormOpen ? renderFormAddCard() : renderAddButton();
+    return formOpen ? renderFormAddCard() : renderAddButton();
 }
 
 export default AddListCard;

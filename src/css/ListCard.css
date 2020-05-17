@@ -1,0 +1,7 @@
+#list-card {
+    margin-bottom: 1em;
+    margin-right: unset;
+}
+span {
+    cursor: pointer;
+}
