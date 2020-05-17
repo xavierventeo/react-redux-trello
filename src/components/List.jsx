@@ -3,7 +3,7 @@ import './../css/List.css';
 import Card from 'react-bootstrap/Card';
 
 import ListCard from './ListCard.jsx';
-import AddListCard from './AddListItem.jsx';
+import AddListItem from './AddListItem.jsx';
 
 const List = ( { list } ) => {
   return (
@@ -17,7 +17,7 @@ const List = ( { list } ) => {
           ))}
         </Card.Body>
         <Card.Footer>
-          <AddListCard text={"tarjeta"}/>
+          <AddListItem text={"tarjeta"}/>
         </Card.Footer>
       </Card>
   );

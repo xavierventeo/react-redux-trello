@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux'; 
 import { addListAction } from './../actions/actionAddItems';
 
-const AddListCard = ({ text }) => {
+const AddListItem = ( props, { text }) => {
     const [formOpen, setFormOpen] = useState(false);
     const [textArea, setTextArea] = useState("");
 
@@ -26,7 +26,7 @@ const AddListCard = ({ text }) => {
 
     const addItem = () => {
         if (textArea) {
-            addListAction(textArea);
+            props.addList(textArea);
         }
         setTextArea("");
     }
@@ -50,5 +50,6 @@ const mapDispatchToProps = (dispatch) => ({
     addList : (title) => addListAction(dispatch, title)
 })
 
+const connectedControls = connect(null, mapDispatchToProps)(AddListItem);
 
-export default connect (null, mapDispatchToProps) (AddListCard);
+export default connectedControls;
