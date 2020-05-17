@@ -3,7 +3,7 @@ import './../css/AddListCard.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-const AddListCard = (props) => {
+const AddListCard = ({ text }) => {
     const [formOpen, setFormOpen] = useState(false);
 
     const openForm = () => {
@@ -14,15 +14,15 @@ const AddListCard = (props) => {
         setFormOpen(false);
     }
 
-    const renderAddButton = () => {
-        return <span onClick={openForm}>+ Añade otra tarjeta</span>
+    const renderAddButton = (text) => {
+        return <span onClick={openForm}>+ Añade otra {text}</span>
     };
 
-    const renderFormAddCard = () => {
+    const renderFormAddCard = (text) => {
         return (
             <Container>
                 <textarea className="form-control" id="newCard" rows="2"></textarea>
-                <Button variant="success" size="sm" onClick={openForm}>Añadir tarjeta</Button>
+                    <Button variant="success" size="sm" onClick={openForm}>Añadir {text}</Button>
                 <button type="button" className="close" aria-label="Close" onClick={closeForm}>
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -30,7 +30,7 @@ const AddListCard = (props) => {
         )
     };
 
-    return formOpen ? renderFormAddCard() : renderAddButton();
+    return formOpen ? renderFormAddCard(text) : renderAddButton(text);
 }
 
 export default AddListCard;
