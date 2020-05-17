@@ -21,9 +21,9 @@ const AddListCard = (props) => {
     const renderFormAddCard = () => {
         return (
             <Container>
-                <textarea class="form-control" id="newCard" rows="2"></textarea>
+                <textarea className="form-control" id="newCard" rows="2"></textarea>
                 <Button variant="success" size="sm" onClick={openForm}>Añadir tarjeta</Button>
-                <button type="button" class="close" aria-label="Close" onClick={closeForm}>
+                <button type="button" className="close" aria-label="Close" onClick={closeForm}>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </Container>
