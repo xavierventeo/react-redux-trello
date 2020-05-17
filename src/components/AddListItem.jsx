@@ -1,10 +1,12 @@
 import React, {useState}  from 'react';
 import './../css/AddListCard.css';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
+import { connect } from 'react-redux'; 
+import { addListAction } from './../actions/actionAddItems';
 
 const AddListCard = ({ text }) => {
     const [formOpen, setFormOpen] = useState(false);
+    const [textArea, setTextArea] = useState("");
 
     const openForm = () => {
         setFormOpen(true);
@@ -18,11 +20,22 @@ const AddListCard = ({ text }) => {
         return <span onClick={openForm}>+ Añade otra {text}</span>
     };
 
+    const handleChange = (event) => {
+        setTextArea(event.target.value);
+    };
+
+    const addItem = () => {
+        if (textArea) {
+            addListAction(textArea);
+        }
+        setTextArea("");
+    }
+
     const renderFormAddCard = (text) => {
         return (
             <div>
-                <textarea className="form-control" id="newCard" rows="2" cols="20"></textarea>
-                    <Button variant="success" size="sm" onClick={openForm}>Añadir {text}</Button>
+                <textarea className="form-control" id="text-new-card" rows="2" cols="20" onChange={handleChange}></textarea>
+                <Button variant="success" size="sm" onClick={addItem}>Añadir {text}</Button>
                 <button type="button" className="close" aria-label="Close" onClick={closeForm}>
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -33,4 +46,9 @@ const AddListCard = ({ text }) => {
     return formOpen ? renderFormAddCard(text) : renderAddButton(text);
 }
 
-export default AddListCard;
+const mapDispatchToProps = (dispatch) => ({
+    addList : (title) => addListAction(dispatch, title)
+})
+
+
+export default connect (null, mapDispatchToProps) (AddListCard);
