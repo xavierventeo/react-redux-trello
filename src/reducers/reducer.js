@@ -36,13 +36,17 @@ const initialState = {
 function reducerList(state = initialState, action) {
     switch (action.type) {
       case "ADD_LIST":
-        let newList = {
-          id: Date.now(),
-          title: action.payload.title,
-          cards: []
+        return {
+          ...state,
+          lists: [
+              ...state.lists,
+              {
+                id: Date.now(),
+                title: action.payload.title,
+                cards: []
+              }
+          ]
         };
-        return [...state, newList];
-
       default:
           return state;
     }
