@@ -3,5 +3,5 @@ export const addListAction = (dispatch, text) =>
         type: 'ADD_LIST',
         payload: text,
         cards: [],
-        id: Date.now(),
+        id: Date.now()
 });
