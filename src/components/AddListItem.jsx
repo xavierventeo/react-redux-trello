@@ -29,6 +29,7 @@ const AddListItem = ( props, { text }) => {
             props.addList(textArea);
         }
         setTextArea("");
+        closeForm();
     }
 
     const renderFormAddCard = (text) => {

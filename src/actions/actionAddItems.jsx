@@ -1,7 +1,5 @@
-export const addListAction = (dispatch, title) =>  {
-    alert(title);
+export const addListAction = (dispatch, title) => 
     dispatch({
         type: 'ADD_LIST',
         payload: title
 });
-}
