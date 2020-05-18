@@ -48,6 +48,29 @@ function reducerList(state = initialState, action) {
               }
           ]
         };
+
+      case actionDispatch.ADD_CARD:
+        let newState = state;
+        console.log(state.lists);
+
+        newState = (state.lists).map(list => {
+          if (list.id === action.listID) {
+            return {
+              ...list,
+              cards: [...list.cards, 
+                        {
+                          id: Date.now(),
+                          text: action.payload,
+                        }
+                     ]
+            };
+          } else {
+            return list;
+          };
+        });
+
+        return newState;
+
       default:
           return state;
     }

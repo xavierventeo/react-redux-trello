@@ -10,6 +10,7 @@ export const addListAction = (dispatch, title) => {
 export const addCardAction = (dispatch, title, listID) => {
     dispatch({
         type: actionDispatch.ADD_CARD,
-        payload: title
+        payload: title, 
+        listID: listID
     });
 };
