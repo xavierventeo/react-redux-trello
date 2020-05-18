@@ -57,19 +57,20 @@ function reducerList(state = initialState, action) {
           if (list.id === action.listID) {
             return {
               ...list,
-              cards: [...list.cards, 
-                        {
-                          id: Date.now(),
-                          text: action.payload,
-                        }
-                     ]
+              cards: [
+                ...list.cards,
+                {
+                  id: Date.now(),
+                  title: action.payload,
+                }
+              ]
             };
           } else {
             return list;
           };
         });
-console.log(newState)
-        return state;
+
+        return newState;
 
       default:
           return state;
