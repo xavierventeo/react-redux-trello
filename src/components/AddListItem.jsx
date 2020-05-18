@@ -38,8 +38,8 @@ const AddListItem = (props) => {
 
     const renderFormAddCard = () => {
         return (
-            <div>
-                <textarea className="form-control" id="text-new-card" rows="2" cols="20" onChange={handleChange}></textarea>
+            <div onBlur={addItem}>
+                <textarea className="form-control" id="text-new-card" rows="2" cols="20" onChange={handleChange} autoFocus></textarea>
                 <Button variant="success" size="sm" onClick={addItem}>Añadir {props.text}</Button>
                 <button type="button" className="close" aria-label="Close" onClick={closeForm}>
                     <span aria-hidden="true">&times;</span>
