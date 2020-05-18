@@ -68,8 +68,8 @@ function reducerList(state = initialState, action) {
             return list;
           };
         });
-
-        return newState;
+console.log(newState)
+        return state;
 
       default:
           return state;
