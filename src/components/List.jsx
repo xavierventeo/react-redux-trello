@@ -17,7 +17,7 @@ const List = ( { list } ) => {
           ))}
         </Card.Body>
         <Card.Footer>
-          <AddListItem text={"tarjeta"}/>
+          <AddListItem text={"tarjeta"} listID={ list.id }/>
         </Card.Footer>
       </Card>
   );

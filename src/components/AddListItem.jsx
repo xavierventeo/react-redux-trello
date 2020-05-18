@@ -2,7 +2,7 @@ import React, {useState}  from 'react';
 import './../css/AddListItem.css'
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux'; 
-import { addListAction } from './../actions/actionAddItems';
+import { addListAction, addCardAction } from './../actions/actionAddItems';
 
 const AddListItem = (props) => {
     const [formOpen, setFormOpen] = useState(false);
@@ -26,7 +26,11 @@ const AddListItem = (props) => {
 
     const addItem = () => {
         if (textArea) {
-            props.addList(textArea);
+            if (props.listID) {
+                props.addCard(textArea, props.listID);
+            } else {
+                props.addList(textArea);
+            }
         }
         setTextArea("");
         closeForm();
@@ -48,7 +52,8 @@ const AddListItem = (props) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addList : (title) => addListAction(dispatch, title)
+    addList : (title) => addListAction(dispatch, title),
+    addCard : (title, listID) => addCardAction(dispatch, title, listID)
 })
 
 const connectedControls = connect(null, mapDispatchToProps)(AddListItem);

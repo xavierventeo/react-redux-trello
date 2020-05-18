@@ -3,7 +3,7 @@ import {actionDispatch} from './../actions/actionsDefinition';
 const initialState = {
   lists:[
     {
-      id: 0,
+      id: 1,
       title: "Pending",
       cards:[
         {
@@ -17,7 +17,7 @@ const initialState = {
       ]    
     },
     {
-      id: 1,
+      id: 2,
       title: "In Progress",
       cards:[
         {
