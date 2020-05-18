@@ -1,8 +1,9 @@
+import {actionDispatch} from './../actions/actionsDefinition';
 
 const initialState = {
   lists:[
     {
-      id: 0,
+      id: 1,
       title: "Pending",
       cards:[
         {
@@ -16,7 +17,7 @@ const initialState = {
       ]    
     },
     {
-      id: 1,
+      id: 2,
       title: "In Progress",
       cards:[
         {
@@ -35,7 +36,7 @@ const initialState = {
     
 function reducerList(state = initialState, action) {
     switch (action.type) {
-      case "ADD_LIST":
+      case actionDispatch.ADD_LIST:
         return {
           ...state,
           lists: [
@@ -47,6 +48,29 @@ function reducerList(state = initialState, action) {
               }
           ]
         };
+
+      case actionDispatch.ADD_CARD:
+        const newState = { ...state };
+
+        newState.lists = (state.lists).map(list => {
+          if (list.id === action.listID) {
+            return {
+              ...list,
+              cards: [
+                ...list.cards,
+                {
+                  id: Date.now(),
+                  text: action.payload,
+                }
+              ]
+            };
+          } else {
+            return list;
+          };
+        });
+console.log(newState);
+        return newState;
+
       default:
           return state;
     }

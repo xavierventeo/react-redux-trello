@@ -2,12 +2,12 @@ import React, {useState}  from 'react';
 import './../css/AddListItem.css'
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux'; 
-import { addListAction } from './../actions/actionAddItems';
+import { addListAction, addCardAction } from './../actions/actionAddItems';
 
-const AddListItem = ( props, { text }) => {
+const AddListItem = (props) => {
     const [formOpen, setFormOpen] = useState(false);
     const [textArea, setTextArea] = useState("");
-
+    
     const openForm = () => {
         setFormOpen(true);
     }
@@ -16,8 +16,8 @@ const AddListItem = ( props, { text }) => {
         setFormOpen(false);
     }
 
-    const renderAddButton = (text) => {
-        return <span onClick={openForm}>+ Añade otra {text}</span>
+    const renderAddButton = () => {
+        return <span onClick={openForm}>+ Añade otra {props.text}</span>
     };
 
     const handleChange = (event) => {
@@ -26,17 +26,21 @@ const AddListItem = ( props, { text }) => {
 
     const addItem = () => {
         if (textArea) {
-            props.addList(textArea);
+            if (props.listID) {
+                props.addCard(textArea, props.listID);
+            } else {
+                props.addList(textArea);
+            }
         }
         setTextArea("");
         closeForm();
     }
 
-    const renderFormAddCard = (text) => {
+    const renderFormAddCard = () => {
         return (
             <div>
                 <textarea className="form-control" id="text-new-card" rows="2" cols="20" onChange={handleChange}></textarea>
-                <Button variant="success" size="sm" onClick={addItem}>Añadir {text}</Button>
+                <Button variant="success" size="sm" onClick={addItem}>Añadir {props.text}</Button>
                 <button type="button" className="close" aria-label="Close" onClick={closeForm}>
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -44,11 +48,12 @@ const AddListItem = ( props, { text }) => {
         )
     };
 
-    return formOpen ? renderFormAddCard(text) : renderAddButton(text);
+    return formOpen ? renderFormAddCard() : renderAddButton();
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addList : (title) => addListAction(dispatch, title)
+    addList : (title) => addListAction(dispatch, title),
+    addCard : (title, listID) => addCardAction(dispatch, title, listID)
 })
 
 const connectedControls = connect(null, mapDispatchToProps)(AddListItem);
