@@ -50,9 +50,9 @@ function reducerList(state = initialState, action) {
         };
 
       case actionDispatch.ADD_CARD:
-        let newState = state;
+        const newState = { ...state };
 
-          newState.lists = (state.lists).map(list => {
+        newState.lists = (state.lists).map(list => {
           if (list.id === action.listID) {
             return {
               ...list,
