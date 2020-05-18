@@ -1,5 +1,7 @@
+import {actionDispatch} from './../actions/actionsDefinition';
+
 export const addListAction = (dispatch, title) => 
     dispatch({
-        type: 'ADD_LIST',
+        type: actionDispatch.ADD_LIST,
         payload: title
 });

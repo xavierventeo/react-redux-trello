@@ -1,3 +1,4 @@
+import {actionDispatch} from './../actions/actionsDefinition';
 
 const initialState = {
   lists:[
@@ -35,7 +36,7 @@ const initialState = {
     
 function reducerList(state = initialState, action) {
     switch (action.type) {
-      case "ADD_LIST":
+      case actionDispatch.ADD_LIST:
         return {
           ...state,
           lists: [
