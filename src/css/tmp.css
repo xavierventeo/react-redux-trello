@@ -1,0 +1,15 @@
+.lists {
+    display: flex;
+    flex-direction: row;
+}
+
+.divlista {
+    background-color: lightseagreen;
+    padding: 1em;
+}
+
+.divcard {
+    background-color: lightsalmon;
+    padding: 1em;
+
+}
