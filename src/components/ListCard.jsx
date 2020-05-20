@@ -5,10 +5,12 @@ import Card from 'react-bootstrap/Card';
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
-
+function allowDrop(ev) {
+  ev.preventDefault();
+}
 const ListCard = ( { card } ) => {
   return (
-    <Card key = { card.id } id="list-card" className="bg-light" draggable="true" onDragStart={drag}>
+    <Card key = { card.id } id="list-card" className="bg-light" draggable="true" onDragStart={drag} onDragOver={allowDrop}>
       <Card.Body>
         <div className="list-card-body-item">{ card.text }</div>
         <div className="list-card-body-item">
