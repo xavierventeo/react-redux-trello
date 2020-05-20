@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = (props) => {
   return (
-    <div id="header" class="container-fluid bg-orange p-1">
+    <div id="header">
         <h1>React Redux Trello</h1>
     </div>
   );
