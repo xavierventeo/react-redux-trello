@@ -71,7 +71,21 @@ function reducerList(state = initialState, action) {
         return newState;
 
         case actionDispatch.ORDER_CARD:
-          return state;
+          const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId } = action.payload;
+          const newStateDnd = { ...state };
+console.log(droppableIdStart);
+console.log(droppableIdEnd);
+console.log(droppableIndexStart);
+console.log(droppableIndexEnd);
+console.log(draggableId)
+          if (droppableIdStart === droppableIdEnd) {
+
+          } else {
+
+          }
+
+
+          return newStateDnd;
   
       default:
           return state;
