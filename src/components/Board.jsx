@@ -12,14 +12,14 @@ import './../css/Board.css';
 const Board = (props) => {
 
   const onDragEnd = (result) => {
-    const { source, destination, draggableId } = result;
+    const { source, destination } = result;
   
     // dropped outside the list
     if (!destination) {
       return;
     }
 
-    props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index, draggableId);
+    props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);
   }
   return (
     <div className="board">
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  orderCard : (droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId) => orderCardAction(dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId),
+  orderCard : (droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd) => orderCardAction(dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd),
 });
 
 const connectedBoard = connect(mapStateToProps, mapDispatchToProps)(Board);
