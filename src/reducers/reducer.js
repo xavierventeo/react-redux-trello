@@ -68,9 +68,11 @@ function reducerList(state = initialState, action) {
             return list;
           };
         });
-console.log(newState);
         return newState;
 
+        case actionDispatch.ORDER_CARD:
+          return state;
+  
       default:
           return state;
     }
