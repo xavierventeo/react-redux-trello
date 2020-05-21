@@ -19,7 +19,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 const ListCard = ( props ) => {
   return (
-      <Draggable draggableId={String(props.card.id)} key={props.card.id} index={props.index}>
+    <Draggable draggableId={String(props.card.id)} key={props.card.id} index={props.index}>
       { (provided, snapshot) => (
         <div className="divcard" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
           <div style={{borderStyle: "solid", display: "flex",justifyContent: "space-around"}}>

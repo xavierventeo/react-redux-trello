@@ -1,17 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
-import './../css/Board.css';
 import { DragDropContext } from "react-beautiful-dnd";
 
 import List from './List.jsx';
 import AddList from './AddListItem';
 
-const onDragEnd = (result) => {
+import { orderCardAction } from './../actions/actionDnd.jsx';
 
-
-}
+import './../css/Board.css';
 
 const Board = (props) => {
+
+  const onDragEnd = (result) => {
+    const { source, destination } = result;
+  
+    // dropped outside the list
+    if (!destination) {
+      return;
+    }
+  
+  
+  }
   return (
     <div className="board">
       <DragDropContext onDragEnd={onDragEnd}>
@@ -32,6 +41,10 @@ const mapStateToProps = (state) => ({
   lists: state.lists,
 });
 
-const connectedBoard = connect(mapStateToProps)(Board);
+const mapDispatchToProps = (dispatch) => ({
+  orderCard : (droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId) => orderCardAction(dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd, draggableId),
+});
+
+const connectedBoard = connect(mapStateToProps, mapDispatchToProps)(Board);
 
 export default connectedBoard;
