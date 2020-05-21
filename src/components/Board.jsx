@@ -12,14 +12,14 @@ import './../css/Board.css';
 const Board = (props) => {
 
   const onDragEnd = (result) => {
-    const { source, destination } = result;
+    const { source, destination, draggableId } = result;
   
     // dropped outside the list
     if (!destination) {
       return;
     }
-  
-  
+
+    props.orderCard(source.droppableIdStart, destination.droppableIdEnd, source.droppableIndexStart, destination.droppableIndexEnd, draggableId);
   }
   return (
     <div className="board">
