@@ -68,9 +68,26 @@ function reducerList(state = initialState, action) {
             return list;
           };
         });
-console.log(newState);
         return newState;
 
+        case actionDispatch.ORDER_CARD:
+          const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd } = action.payload;
+          const newStateDnd = { ...state };
+
+          if (droppableIdStart === droppableIdEnd) {
+            const cardsArray = newStateDnd.lists[droppableIdStart -1].cards;
+            const [removed] = cardsArray.splice(droppableIndexStart, 1);
+            cardsArray.splice(droppableIndexEnd, 0, removed);
+          } else {
+            const cardsArraySource = newStateDnd.lists[droppableIdStart -1].cards;
+            const cardsArrayDestination = newStateDnd.lists[droppableIdEnd -1].cards;
+
+            const [removed] = cardsArraySource.splice(droppableIndexStart, 1);
+            cardsArrayDestination.splice(droppableIndexEnd, 0, removed);
+          }
+
+          return newStateDnd;
+  
       default:
           return state;
     }
