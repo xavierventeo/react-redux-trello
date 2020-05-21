@@ -12,8 +12,7 @@ const App = () => {
     <Container fluid>
       <Header/>
       <Provider store={store}>
-      <Board/>
-
+        <Board/>
       </Provider>
     </Container>
   );

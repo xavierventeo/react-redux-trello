@@ -1,27 +1,35 @@
 import React from 'react';
 import './../css/ListCard.css';
-import Card from 'react-bootstrap/Card';
+import { Draggable } from "react-beautiful-dnd";
 
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-const ListCard = ( { card } ) => {
+const grid = 8;
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  // some basic styles to make the items look a bit nicer
+  userSelect: "none",
+  padding: grid * 2,
+  margin: `0 0 ${grid}px 0`,
+
+  // change background colour if dragging
+  background: isDragging ? "lightgreen" : "grey",
+
+  // styles we need to apply on draggables
+  ...draggableStyle
+});
+
+const ListCard = ( props ) => {
   return (
-    <Card key = { card.id } id="list-card" className="bg-light" draggable="true" onDragStart={drag} onDragOver={allowDrop}>
-      <Card.Body>
-        <div className="list-card-body-item">{ card.text }</div>
-        <div className="list-card-body-item">
-          <svg className="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
-            <path fillRule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clipRule="evenodd"/>
-          </svg>
+      <Draggable draggableId={String(props.card.id)} key={props.card.id} index={props.index}>
+      { (provided, snapshot) => (
+        <div className="divcard" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
+          <div style={{borderStyle: "solid", display: "flex",justifyContent: "space-around"}}>
+            {props.card.text}
+            <button type="button">delete</button>
+          </div>
         </div>
-      </Card.Body>
-    </Card>
-  );
+      )}
+    </Draggable>
+  )
 }
 
 export default ListCard;
