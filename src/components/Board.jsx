@@ -19,7 +19,7 @@ const Board = (props) => {
       return;
     }
 
-    props.orderCard(source.droppableIdStart, destination.droppableIdEnd, source.droppableIndexStart, destination.droppableIndexEnd, draggableId);
+    props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index, draggableId);
   }
   return (
     <div className="board">
