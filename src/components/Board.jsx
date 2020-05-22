@@ -18,12 +18,19 @@ const Board = (props) => {
     if (!destination) {
       return;
     }
-    if (type === "CARD") {
-      props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);
-    } else {
-      console.log("Mover lista");
+
+    switch (type) {
+      case "LIST":
+        console.log("Mover lista");
+        break;
+      case "CARD":
+        props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);
+        break;
+      default: 
+        return;
     }
   }
+
   return (
     <div className="board">
       <DragDropContext onDragEnd={onDragEnd}>
