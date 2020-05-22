@@ -1,4 +1,4 @@
-import {actionDispatch} from './../actions/actionsDefinition';
+import {actionDispatch} from './actionsDefinition';
 
 export const orderCardAction = (dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd) => {
     dispatch({
