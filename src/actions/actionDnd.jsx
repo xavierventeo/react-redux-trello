@@ -7,8 +7,6 @@ export const orderCardAction = (dispatch, droppableIdStart, droppableIdEnd, drop
     });
 };
 
-
-
 export const orderListAction = (dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd) => {
     dispatch({
         type: actionDispatch.ORDER_LIST,
