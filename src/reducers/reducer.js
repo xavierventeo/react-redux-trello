@@ -71,23 +71,36 @@ function reducerList(state = initialState, action) {
         return newState;
 
         case actionDispatch.ORDER_CARD:
-          const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd } = action.payload;
           const newStateDnd = { ...state };
+          {
+            const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd } = action.payload;
 
-          if (droppableIdStart === droppableIdEnd) {
-            const cardsArray = newStateDnd.lists[droppableIdStart -1].cards;
-            const [removed] = cardsArray.splice(droppableIndexStart, 1);
-            cardsArray.splice(droppableIndexEnd, 0, removed);
-          } else {
-            const cardsArraySource = newStateDnd.lists[droppableIdStart -1].cards;
-            const cardsArrayDestination = newStateDnd.lists[droppableIdEnd -1].cards;
-
-            const [removed] = cardsArraySource.splice(droppableIndexStart, 1);
-            cardsArrayDestination.splice(droppableIndexEnd, 0, removed);
+            if (droppableIdStart === droppableIdEnd) {
+              const cardsArray = newStateDnd.lists[droppableIdStart -1].cards;
+              const [removed] = cardsArray.splice(droppableIndexStart, 1);
+              cardsArray.splice(droppableIndexEnd, 0, removed);
+            } else {
+              const cardsArraySource = newStateDnd.lists[droppableIdStart -1].cards;
+              const cardsArrayDestination = newStateDnd.lists[droppableIdEnd -1].cards;
+  
+              const [removed] = cardsArraySource.splice(droppableIndexStart, 1);
+              cardsArrayDestination.splice(droppableIndexEnd, 0, removed);
+            }
           }
 
           return newStateDnd;
-  
+
+        case actionDispatch.ORDER_LIST:
+          const newStateListOrder = { ...state };
+          const { droppableIndexStart, droppableIndexEnd } = action.payload;
+
+          let listsArraySource = newStateListOrder.lists;
+
+          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
+          listsArraySource.splice(droppableIndexEnd, 0, removed);
+
+          return newStateListOrder;
+            
       default:
           return state;
     }
