@@ -70,6 +70,30 @@ function reducerList(state = initialState, action) {
         });
         return newState;
 
+        case actionDispatch.REMOVE_LIST:
+          console.log("Reducer: remove list");
+          return state;
+
+        case actionDispatch.REMOVE_CARD:
+          console.log("Reducer: remove card");
+          const { listID, cardID } = action.payload;
+
+          console.log("listID: " + listID);
+          console.log("cardID: " + cardID);
+
+          return state;
+
+        case actionDispatch.ORDER_LIST:
+          const newStateListOrder = { ...state };
+          const { droppableIndexStart, droppableIndexEnd } = action.payload;
+
+          let listsArraySource = newStateListOrder.lists;
+
+          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
+          listsArraySource.splice(droppableIndexEnd, 0, removed);
+
+          return newStateListOrder;
+
         case actionDispatch.ORDER_CARD:
           const newStateDnd = { ...state };
           {
@@ -91,17 +115,6 @@ function reducerList(state = initialState, action) {
           }
 
           return newStateDnd;
-
-        case actionDispatch.ORDER_LIST:
-          const newStateListOrder = { ...state };
-          const { droppableIndexStart, droppableIndexEnd } = action.payload;
-
-          let listsArraySource = newStateListOrder.lists;
-
-          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
-          listsArraySource.splice(droppableIndexEnd, 0, removed);
-
-          return newStateListOrder;
             
       default:
           return state;

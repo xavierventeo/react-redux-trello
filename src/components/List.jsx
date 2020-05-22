@@ -19,7 +19,7 @@ const List = ( props ) => {
                 <div>{props.list.title}</div>  
                 <div>
                   { (props.list.cards).map( (card, index) => (
-                    <ListCard card={card} index={index} key={card.id} />
+                    <ListCard card={card} index={index} key={card.id} listID={props.list.id}/>
                   ))}
                 </div>
                 {provided.placeholder}
