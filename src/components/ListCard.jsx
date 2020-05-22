@@ -24,7 +24,7 @@ const ListCard = ( props ) => {
         <div className="divcard" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
           <div style={{borderStyle: "solid", display: "flex",justifyContent: "space-around"}}>
             {props.card.text}
-            <button type="button">delete</button>
+            <button type="button">❌</button>
           </div>
         </div>
       )}
