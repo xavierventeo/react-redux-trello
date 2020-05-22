@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 import List from './List.jsx';
 import AddList from './AddListItem';
@@ -8,6 +8,14 @@ import AddList from './AddListItem';
 import { orderCardAction } from './../actions/actionDnd.jsx';
 
 import './../css/Board.css';
+
+const grid = 8;
+
+const getListStyle = isDraggingOver => ({
+  background: isDraggingOver ? "lightblue" : "lightgrey",
+  padding: grid,
+  width: 250
+});
 
 const Board = (props) => {
 
@@ -24,11 +32,16 @@ const Board = (props) => {
   return (
     <div className="board">
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="lists">
-          { (props.lists).map( (list, ind) => (
-            <List key={list.id} list={list}/>
-          ))}
-        </div>
+        <Droppable droppableId="lists" direction="horizontal" type="LIST">
+        { (provided, snapshot) => (
+          <div key="" className="lists" {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+            { (props.lists).map( (list, index) => (
+              <List key={list.id} list={list} listIndex={index}/>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+        </Droppable>  
       </DragDropContext>
       <div className="lists">
         <AddList text={"lista"}/>
