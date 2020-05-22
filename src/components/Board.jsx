@@ -12,20 +12,23 @@ import './../css/Board.css';
 const Board = (props) => {
 
   const onDragEnd = (result) => {
-    const { source, destination } = result;
-  
+    const { source, destination, type } = result;
+  console.log(result);
     // dropped outside the list
     if (!destination) {
       return;
     }
-
-    props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);
+    if (type === "CARD") {
+      props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);
+    } else {
+      console.log("Mover lista");
+    }
   }
   return (
     <div className="board">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="lists" direction="horizontal" type="LIST">
-        { (provided, snapshot) => (
+        { (provided) => (
           <div key="lists" className="lists" {...provided.droppableProps} ref={provided.innerRef}>
             { (props.lists).map( (list, index) => (
               <List key={list.id} list={list} listIndex={index}/>
