@@ -9,14 +9,6 @@ import { orderCardAction } from './../actions/actionDnd.jsx';
 
 import './../css/Board.css';
 
-const grid = 8;
-
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
-  padding: grid,
-  width: 250
-});
-
 const Board = (props) => {
 
   const onDragEnd = (result) => {
@@ -34,7 +26,7 @@ const Board = (props) => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="lists" direction="horizontal" type="LIST">
         { (provided, snapshot) => (
-          <div key="" className="lists" {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+          <div key="lists" className="lists" {...provided.droppableProps} ref={provided.innerRef}>
             { (props.lists).map( (list, index) => (
               <List key={list.id} list={list} listIndex={index}/>
             ))}
