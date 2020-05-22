@@ -87,7 +87,11 @@ function reducerList(state = initialState, action) {
           }
 
           return newStateDnd;
-  
+
+        case actionDispatch.ORDER_LIST:
+console.log("reducer order list");
+            return state;
+            
       default:
           return state;
     }

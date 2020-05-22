@@ -5,7 +5,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import List from './List.jsx';
 import AddList from './AddListItem';
 
-import { orderCardAction } from './../actions/actionDnd.jsx';
+import { orderCardAction, orderListAction } from './../actions/actionDnd.jsx';
 
 import './../css/Board.css';
 
@@ -21,7 +21,7 @@ const Board = (props) => {
 
     switch (type) {
       case "LIST":
-        console.log("Mover lista");
+        props.orderList(source.droppableId, destination.droppableId, source.index, destination.index);
         break;
       case "CARD":
         props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);
@@ -58,6 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   orderCard : (droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd) => orderCardAction(dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd),
+  orderList : (droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd) => orderListAction(dispatch, droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd),
 });
 
 const connectedBoard = connect(mapStateToProps, mapDispatchToProps)(Board);
