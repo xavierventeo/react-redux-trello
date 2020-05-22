@@ -99,7 +99,6 @@ function reducerList(state = initialState, action) {
           const [removed] = listsArraySource.splice(droppableIndexStart, 1);
           listsArraySource.splice(droppableIndexEnd, 0, removed);
 
-
           return newStateListOrder;
             
       default:

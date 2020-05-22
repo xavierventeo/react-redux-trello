@@ -13,8 +13,8 @@ const Board = (props) => {
 
   const onDragEnd = (result) => {
     const { source, destination, type } = result;
-  console.log(result);
-    // dropped outside the list
+
+    // if drop outside the list then return
     if (!destination) {
       return;
     }
