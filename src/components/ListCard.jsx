@@ -13,9 +13,7 @@ const ListCard = ( props ) => {
         <div className="divcard" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
           <div style={{borderStyle: "solid", display: "flex",justifyContent: "space-around"}}>
             {props.card.text}
-            <button type="button" onClick={() => props.removeCard(props.listID, props.card.id)}>
-              <span role="img" aria-label="delete-card">❌</span>
-            </button>
+            <span role="img" aria-label="delete-card" onClick={() => props.removeCard(props.listID, props.card.id)}>❌</span>
           </div>
         </div>
       )}
