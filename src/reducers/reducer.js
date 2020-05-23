@@ -68,9 +68,63 @@ function reducerList(state = initialState, action) {
             return list;
           };
         });
-console.log(newState);
         return newState;
 
+        case actionDispatch.REMOVE_LIST:
+          return {
+            ...state,
+            lists: state.lists.filter( (list) => list.id !== action.payload.listID),
+          };
+
+        case actionDispatch.REMOVE_CARD:
+          const newStateRemoveCard = { ...state };
+
+          newStateRemoveCard.lists = (state.lists).map(list => {
+            if (list.id === action.payload.listID) {
+              let newCards = list.cards.filter( (card) => card.id !== action.payload.cardID);
+              return {
+                ...list,
+                cards: newCards
+              };
+            } else {
+              return list;
+            };
+          });
+          return newStateRemoveCard;
+
+          case actionDispatch.ORDER_LIST:
+          const newStateListOrder = { ...state };
+          const { droppableIndexStart, droppableIndexEnd } = action.payload;
+
+          let listsArraySource = newStateListOrder.lists;
+
+          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
+          listsArraySource.splice(droppableIndexEnd, 0, removed);
+
+          return newStateListOrder;
+
+        case actionDispatch.ORDER_CARD:
+          const newStateDnd = { ...state };
+          {
+            const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd } = action.payload;
+            const listIndexStart = (newStateDnd.lists.map(list => String(list.id))).indexOf(droppableIdStart);
+
+            if (droppableIdStart === droppableIdEnd) {
+              const cardsArray = newStateDnd.lists[listIndexStart].cards;
+              const [removed] = cardsArray.splice(droppableIndexStart, 1);
+              cardsArray.splice(droppableIndexEnd, 0, removed);
+            } else {
+              const cardsArraySource = newStateDnd.lists[listIndexStart].cards;
+              const listIndexDestination = newStateDnd.lists.map(list => String(list.id)).indexOf(droppableIdEnd);
+              const cardsArrayDestination = newStateDnd.lists[listIndexDestination].cards;
+  
+              const [removed] = cardsArraySource.splice(droppableIndexStart, 1);
+              cardsArrayDestination.splice(droppableIndexEnd, 0, removed);
+            }
+          }
+
+          return newStateDnd;
+            
       default:
           return state;
     }

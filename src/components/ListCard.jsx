@@ -1,13 +1,30 @@
 import React from 'react';
 import './../css/ListCard.css';
-import Card from 'react-bootstrap/Card';
+import { Draggable } from 'react-beautiful-dnd';
+import { getItemStyle } from './dndUtils'
 
-const ListCard = ( { card } ) => {
-  return (
-    <Card key = { card.id } id="list-card" className="bg-light">
-      <Card.Body>{ card.text }</Card.Body>
-    </Card>
-  );
+import { connect } from 'react-redux'; 
+import { removeCardAction  } from './../actions/actionRemoveItems';
+
+const ListCard = ( props ) => {
+  return ( 
+    <Draggable draggableId={`droppableCard${String(props.card.id)}`} key={`droppableCard${String(props.card.id)}`} index={props.index}>
+      { (provided, snapshot) => (
+        <div className="divcard" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
+          <div style={{borderStyle: "solid", display: "flex",justifyContent: "space-around"}}>
+            {props.card.text}
+            <span role="img" aria-label="delete-card" onClick={() => props.removeCard(props.listID, props.card.id)}>❌</span>
+          </div>
+        </div>
+      )}
+    </Draggable>
+  )
 }
 
-export default ListCard;
+const mapDispatchToProps = (dispatch) => ({
+  removeCard : (listID, cardID) => removeCardAction(dispatch, listID, cardID)
+})
+
+const connectedListCard = connect(null, mapDispatchToProps)(ListCard);
+
+export default connectedListCard;
