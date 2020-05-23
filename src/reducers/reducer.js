@@ -72,7 +72,11 @@ function reducerList(state = initialState, action) {
 
         case actionDispatch.REMOVE_LIST:
           console.log("Reducer: remove list");
-          return state;
+          console.log(action.payload.listID);
+          return {
+            ...state,
+            lists: state.lists.filter( (list) => list.id !== action.payload.listID),
+          };
 
         case actionDispatch.REMOVE_CARD:
           const { listID, cardID } = action.payload;
