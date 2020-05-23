@@ -75,13 +75,20 @@ function reducerList(state = initialState, action) {
           return state;
 
         case actionDispatch.REMOVE_CARD:
-          console.log("Reducer: remove card");
           const { listID, cardID } = action.payload;
+          const newStateRemoveCard = { ...state };
+          newStateRemoveCard.lists.map(list => {
+            if (list.id === listID) {
+              list.cards = list.cards.filter( (card) => String(card.id) !== String(cardID));
+            } 
+            return list;
+          });
 
-          console.log("listID: " + listID);
-          console.log("cardID: " + cardID);
+          console.log(newStateRemoveCard);
+ 
 
-          return state;
+
+          return newStateRemoveCard;
 
         case actionDispatch.ORDER_LIST:
           const newStateListOrder = { ...state };
