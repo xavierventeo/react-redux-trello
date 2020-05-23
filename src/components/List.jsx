@@ -5,6 +5,9 @@ import ListCard from './ListCard.jsx';
 import AddListItem from './AddListItem.jsx';
 import { getListStyle, getItemStyle } from './dndUtils'
 
+import { connect } from 'react-redux'; 
+import { removeListAction  } from './../actions/actionRemoveItems';
+
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const List = ( props ) => {
@@ -16,10 +19,13 @@ const List = ( props ) => {
           <Droppable droppableId={String(props.list.id)} type="CARD">  
             { (provided, snapshot) => (
               <div className="divlista" {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                <div>{props.list.title}</div>  
+                <div>
+                  {props.list.title}
+                  <span role="img" aria-label="delete-card" onClick={() => props.removeList(props.list.id)}>❌</span>
+                </div>  
                 <div>
                   { (props.list.cards).map( (card, index) => (
-                    <ListCard card={card} index={index} key={card.id} />
+                    <ListCard card={card} index={index} key={card.id} listID={props.list.id}/>
                   ))}
                 </div>
                 {provided.placeholder}
@@ -36,4 +42,10 @@ const List = ( props ) => {
     </div>
   )}
 
-export default List;
+const mapDispatchToProps = (dispatch) => ({
+  removeList : (listID) => removeListAction(dispatch, listID)
+})
+
+const connectedList = connect(null, mapDispatchToProps)(List);
+
+export default connectedList;

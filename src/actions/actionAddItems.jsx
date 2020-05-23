@@ -1,4 +1,4 @@
-import {actionDispatch} from './../actions/actionsDefinition';
+import {actionDispatch} from './actionsDefinition';
 
 export const addListAction = (dispatch, title) => {
     dispatch({

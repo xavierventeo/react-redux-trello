@@ -70,6 +70,39 @@ function reducerList(state = initialState, action) {
         });
         return newState;
 
+        case actionDispatch.REMOVE_LIST:
+          return {
+            ...state,
+            lists: state.lists.filter( (list) => list.id !== action.payload.listID),
+          };
+
+        case actionDispatch.REMOVE_CARD:
+          const newStateRemoveCard = { ...state };
+
+          newStateRemoveCard.lists = (state.lists).map(list => {
+            if (list.id === action.payload.listID) {
+              let newCards = list.cards.filter( (card) => card.id !== action.payload.cardID);
+              return {
+                ...list,
+                cards: newCards
+              };
+            } else {
+              return list;
+            };
+          });
+          return newStateRemoveCard;
+
+          case actionDispatch.ORDER_LIST:
+          const newStateListOrder = { ...state };
+          const { droppableIndexStart, droppableIndexEnd } = action.payload;
+
+          let listsArraySource = newStateListOrder.lists;
+
+          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
+          listsArraySource.splice(droppableIndexEnd, 0, removed);
+
+          return newStateListOrder;
+
         case actionDispatch.ORDER_CARD:
           const newStateDnd = { ...state };
           {
@@ -91,17 +124,6 @@ function reducerList(state = initialState, action) {
           }
 
           return newStateDnd;
-
-        case actionDispatch.ORDER_LIST:
-          const newStateListOrder = { ...state };
-          const { droppableIndexStart, droppableIndexEnd } = action.payload;
-
-          let listsArraySource = newStateListOrder.lists;
-
-          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
-          listsArraySource.splice(droppableIndexEnd, 0, removed);
-
-          return newStateListOrder;
             
       default:
           return state;
