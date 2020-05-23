@@ -77,17 +77,22 @@ function reducerList(state = initialState, action) {
           };
 
         case actionDispatch.REMOVE_CARD:
-          let newStateRemoveCard = {...state}; 
-          newStateRemoveCard.lists.map( (list) => {
+          const newStateRemoveCard = { ...state };
+
+          newStateRemoveCard.lists = (state.lists).map(list => {
             if (list.id === action.payload.listID) {
-              list.cards = list.cards.filter( (card) => card.id !== action.payload.cardID);
-            }
-            return list.cards;
+              let newCards = list.cards.filter( (card) => card.id !== action.payload.cardID);
+              return {
+                ...list,
+                cards: newCards
+              };
+            } else {
+              return list;
+            };
           });
-          console.log(newStateRemoveCard);
           return newStateRemoveCard;
 
-        case actionDispatch.ORDER_LIST:
+          case actionDispatch.ORDER_LIST:
           const newStateListOrder = { ...state };
           const { droppableIndexStart, droppableIndexEnd } = action.payload;
 
