@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => {
   return (
-    <div claasName="container-fluid">
+    <div className="container-fluid">
       <Provider store={store}>
           <Header/>
         <Board/>
