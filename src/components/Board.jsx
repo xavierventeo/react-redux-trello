@@ -7,8 +7,6 @@ import AddList from './AddListItem';
 
 import { orderCardAction, orderListAction } from './../actions/actionDnd.jsx';
 
-import './../css/Board.css';
-
 const Board = (props) => {
 
   const onDragEnd = (result) => {
@@ -32,11 +30,11 @@ const Board = (props) => {
   }
 
   return (
-    <div className="board">
+    <div className="d-flex flex-row">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="lists" direction="horizontal" type="LIST">
         { (provided) => (
-          <div key="lists" className="lists" {...provided.droppableProps} ref={provided.innerRef}>
+          <div key="lists" {...provided.droppableProps} ref={provided.innerRef}>
             { (props.lists).map( (list, index) => (
               <List key={list.id} list={list} listIndex={index}/>
             ))}
@@ -45,7 +43,7 @@ const Board = (props) => {
         )}
         </Droppable>  
       </DragDropContext>
-      <div className="lists">
+      <div className="">
         <AddList text={"lista"}/>
       </div>
     </div>
