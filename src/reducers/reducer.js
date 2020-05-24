@@ -24,8 +24,12 @@ const initialState = {
     },      
   ]
 };
+
+const getListParentIndexFromCardId = (newStateDnd, droppableIdStart) => {
+  return newStateDnd.lists.map(list => String(list.id)).indexOf(droppableIdStart);
+}
     
-function reducerList(state = initialState, action) {
+const reducerList = (state = initialState, action) => {
     switch (action.type) {
       case actionDispatch.ADD_LIST:
         return {
@@ -96,17 +100,15 @@ function reducerList(state = initialState, action) {
           const newStateDnd = { ...state };
           {
             const { droppableIdStart, droppableIdEnd, droppableIndexStart, droppableIndexEnd } = action.payload;
-            const listIndexStart = (newStateDnd.lists.map(list => String(list.id))).indexOf(droppableIdStart);
-
+            
             if (droppableIdStart === droppableIdEnd) {
-              const cardsArray = newStateDnd.lists[listIndexStart].cards;
+              const cardsArray = newStateDnd.lists[getListParentIndexFromCardId(newStateDnd, droppableIdStart)].cards;
               const [removed] = cardsArray.splice(droppableIndexStart, 1);
               cardsArray.splice(droppableIndexEnd, 0, removed);
             } else {
-              const cardsArraySource = newStateDnd.lists[listIndexStart].cards;
-              const listIndexDestination = newStateDnd.lists.map(list => String(list.id)).indexOf(droppableIdEnd);
-              const cardsArrayDestination = newStateDnd.lists[listIndexDestination].cards;
-  
+              const cardsArraySource = newStateDnd.lists[getListParentIndexFromCardId(newStateDnd, droppableIdStart)].cards;
+              const cardsArrayDestination = newStateDnd.lists[getListParentIndexFromCardId(newStateDnd, droppableIdEnd)].cards;
+
               const [removed] = cardsArraySource.splice(droppableIndexStart, 1);
               cardsArrayDestination.splice(droppableIndexEnd, 0, removed);
             }
