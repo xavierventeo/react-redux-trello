@@ -1,14 +1,4 @@
-.lists {
-    display: flex;
-    flex-direction: row;
-}
-.lists .card {
-    margin-right: 1em;
-    height: 100%;
-}
-
-.card-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.card {
+    padding: 1em;
+    margin-bottom: 0.5em;
 }

@@ -12,18 +12,18 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const List = ( props ) => {
   return (
-    <div key={`draggableListDiv${String(props.list.id)}`}>
+    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={`draggableListDiv${String(props.list.id)}`}>
     <Draggable draggableId={String(props.list.id)} key={props.list.id} index={props.listIndex}>
       { (provided, snapshot) => (
-        <div className="divdragablelist" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
+        <div className="card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
           <Droppable droppableId={String(props.list.id)} type="CARD">  
             { (provided, snapshot) => (
               <div className="divlista" {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                <div>
+                <div className="card-header">
                   {props.list.title}
                   <span role="img" aria-label="delete-card" onClick={() => props.removeList(props.list.id)}>❌</span>
                 </div>  
-                <div>
+                <div className="card-body">
                   { (props.list.cards).map( (card, index) => (
                     <ListCard card={card} index={index} key={card.id} listID={props.list.id}/>
                   ))}
@@ -37,7 +37,7 @@ const List = ( props ) => {
       </Draggable>
 
       <div key={`addCardDiv${String(props.list.id)}`}>
-        <AddListItem text={"tarjeta"} listID={ props.list.id }/>
+        <AddListItem listID={ props.list.id } isCard={true} text={"tarjeta"} />
       </div>
     </div>
   )}

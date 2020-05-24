@@ -9,12 +9,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 const App = () => {
   return (
     <div claasName="container-fluid">
-      <Header/>
       <Provider store={store}>
+          <Header/>
         <Board/>
       </Provider>
     </div>
-
   );
 }
 

@@ -37,15 +37,23 @@ const AddListItem = (props) => {
     }
 
     const renderFormAddCard = () => {
-        return (
-            <div onBlur={addItem}>
-                <textarea className="form-control" id="text-new-card" rows="2" cols="20" onChange={handleChange} autoFocus></textarea>
-                <Button variant="success" size="sm" onClick={addItem}>Añadir {props.text}</Button>
-                <button type="button" className="close" aria-label="Close" onClick={closeForm}>
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        )
+        if (props.isCard) {
+            return (
+                <div class="form-item" onBlur={addItem} >
+                    <input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input>
+                    <button className="btn-success" size="sm" onClick={addItem}>Añadir {props.text}</button>
+                    <button className="close" aria-label="Close" onClick={closeForm}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            )    
+        } else {
+            return (
+                <div class="form-item" onBlur={addItem}>
+                    <input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input>
+                </div>
+            )    
+        }
     };
 
     return formOpen ? renderFormAddCard() : renderAddButton();

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import './../css/Board.css';
 
 import List from './List.jsx';
-import AddList from './AddListItem';
+
 
 import { orderCardAction, orderListAction } from './../actions/actionDnd.jsx';
 
@@ -30,23 +31,18 @@ const Board = (props) => {
   }
 
   return (
-    <div className="d-flex flex-row">
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="lists" direction="horizontal" type="LIST">
-        { (provided) => (
-          <div key="lists" className="d-flex flex-row" {...provided.droppableProps} ref={provided.innerRef}>
-            { (props.lists).map( (list, index) => (
-              <List key={list.id} list={list} listIndex={index}/>
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-        </Droppable>  
-      </DragDropContext>
-      <div className="">
-        <AddList text={"lista"}/>
-      </div>
-    </div>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="lists" direction="horizontal" type="LIST">
+      { (provided) => (
+        <div key="board" className="row board" {...provided.droppableProps} ref={provided.innerRef}>
+          { (props.lists).map( (list, index) => (
+            <List key={list.id} list={list} listIndex={index}/>
+          ))}
+          {provided.placeholder}
+        </div>
+      )}
+      </Droppable>  
+    </DragDropContext>
   );
 }
 

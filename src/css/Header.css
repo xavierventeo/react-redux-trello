@@ -1,4 +1,15 @@
 .header {
-    background: #026aa7;
+    background: #12947f;
     color: hsla(0,0%,100%,.3);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .form-item {
+    display: flex;
+    flex-direction: row;    
+    align-items: center;
 }
