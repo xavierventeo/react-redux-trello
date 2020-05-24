@@ -1,0 +1,22 @@
+.header {
+    background: #12947f;
+    color: hsla(0,0%,100%,.3);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .form-item {
+    display: flex;
+    flex-direction: row;   
+    justify-content: space-between;
+    align-items: center; 
+    width: 23%;
+}
+
+.header .form-item input {
+    margin-right: 0.5em;
+    margin-bottom: 0em;
+}

@@ -1,4 +1,7 @@
 .board {
-    display: flex;
-    flex-direction: row;
+    margin-top: 1.5em;
+}
+
+.board input {
+    margin-bottom: 0.5em;
 }
