@@ -72,10 +72,9 @@ function reducerList(state = initialState, action) {
 
           newStateRemoveCard.lists = (state.lists).map(list => {
             if (list.id === action.payload.listID) {
-              let newCards = list.cards.filter( (card) => card.id !== action.payload.cardID);
               return {
                 ...list,
-                cards: newCards
+                cards: list.cards.filter( (card) => card.id !== action.payload.cardID)
               };
             } else {
               return list;
