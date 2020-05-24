@@ -34,7 +34,7 @@ const Board = (props) => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="lists" direction="horizontal" type="LIST">
         { (provided) => (
-          <div key="lists" {...provided.droppableProps} ref={provided.innerRef}>
+          <div key="lists" className="d-flex flex-row" {...provided.droppableProps} ref={provided.innerRef}>
             { (props.lists).map( (list, index) => (
               <List key={list.id} list={list} listIndex={index}/>
             ))}
