@@ -1,5 +1,4 @@
 import React from 'react';
-import './../css/App.css';
 import Board from './Board.jsx';
 import Header from './Header.jsx';
 import { Provider } from 'react-redux';
