@@ -87,10 +87,9 @@ function reducerList(state = initialState, action) {
           const newStateListOrder = { ...state };
           const { droppableIndexStart, droppableIndexEnd } = action.payload;
 
-          let listsArraySource = newStateListOrder.lists;
-
-          const [removed] = listsArraySource.splice(droppableIndexStart, 1);
-          listsArraySource.splice(droppableIndexEnd, 0, removed);
+          let listsArray = newStateListOrder.lists;
+          const [removed] = newStateListOrder.lists.splice(droppableIndexStart, 1);
+          listsArray.splice(droppableIndexEnd, 0, removed);
 
           return newStateListOrder;
 
