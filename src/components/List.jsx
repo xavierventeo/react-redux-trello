@@ -21,7 +21,7 @@ const List = ( props ) => {
               <div className="divlista" {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
                 <div className="card-header card-custom-alignment">
                   <span>{props.list.title}</span>
-                  <span role="img" aria-label="delete-card" onClick={() => props.removeList(props.list.id)}>🗑️</span>
+                  <span role="img" aria-label="remove-list" className="remove-icon" onClick={() => props.removeList(props.list.id)}>🗑️</span>
                 </div>  
                 <div className="card-body">
                   { (props.list.cards).map( (card, index) => (

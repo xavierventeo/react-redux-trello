@@ -12,7 +12,7 @@ const ListCard = ( props ) => {
         <div className="card" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} style={getItemStyle(snapshot.isDragging,provided.draggableProps.style)}>
           <div className="card-text card-custom-alignment">
             <span>{props.card.text}</span>
-            <span role="img" aria-label="delete-card" onClick={() => props.removeCard(props.listID, props.card.id)}>🗑️</span>
+            <span role="img" aria-label="remove-card" className="remove-icon" onClick={() => props.removeCard(props.listID, props.card.id)}>🗑️</span>
           </div>
         </div>
       )}

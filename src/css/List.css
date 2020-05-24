@@ -8,3 +8,7 @@
     direction: row;
     justify-content: space-between;
 }
+
+.remove-icon {
+    cursor: pointer;
+}
