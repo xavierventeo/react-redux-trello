@@ -19,8 +19,8 @@ const List = ( props ) => {
           <Droppable droppableId={String(props.list.id)} type="CARD">  
             { (provided, snapshot) => (
               <div className="divlista" {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                <div className="card-header">
-                  {props.list.title}
+                <div className="card-header card-custom-alignment">
+                  <span>{props.list.title}</span>
                   <span role="img" aria-label="delete-card" onClick={() => props.removeList(props.list.id)}>❌</span>
                 </div>  
                 <div className="card-body">
