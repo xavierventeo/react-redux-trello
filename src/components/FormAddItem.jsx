@@ -40,7 +40,7 @@ const FormAddItem = (props) => {
             return (
                 <div class="form-item" onBlur={addItem} >
                     <input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input>
-                    <button className="btn-success" size="sm" onClick={addItem}>Añadir {props.text}</button>
+                    <button className="btn-success btn-sm" onClick={addItem}>Añadir {props.text}</button>
                     <button className="close" aria-label="Close" onClick={closeForm}>
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -49,7 +49,8 @@ const FormAddItem = (props) => {
         } else {
             return (
                 <div class="form-item" onBlur={addItem}>
-                    <input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input>
+                    <span><input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input></span>
+                    <span><button className="btn-success btn-sm" onClick={addItem}><span>Añadir&nbsp;{props.text}</span></button></span>
                 </div>
             )    
         }
