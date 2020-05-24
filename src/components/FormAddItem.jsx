@@ -5,7 +5,7 @@ import { addListAction, addCardAction } from '../actions/actionAddItems';
 
 const FormAddItem = (props) => {
     const [formOpen, setFormOpen] = useState(false);
-    const [textArea, setTextArea] = useState("");
+    const [fieldNewItem, setFieldNewItem] = useState("");
     
     const openForm = () => {
         setFormOpen(true);
@@ -20,18 +20,18 @@ const FormAddItem = (props) => {
     };
 
     const handleChange = (event) => {
-        setTextArea(event.target.value);
+        setFieldNewItem(event.target.value);
     };
 
     const addItem = () => {
-        if (textArea) {
+        if (fieldNewItem) {
             if (props.listID) {
-                props.addCard(textArea, props.listID);
+                props.addCard(fieldNewItem, props.listID);
             } else {
-                props.addList(textArea);
+                props.addList(fieldNewItem);
             }
         }
-        setTextArea("");
+        setFieldNewItem("");
         closeForm();
     }
 
