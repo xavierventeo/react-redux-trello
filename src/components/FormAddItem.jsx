@@ -37,7 +37,7 @@ const FormAddItem = (props) => {
     const renderFormAddCard = () => {
         if (props.isCard) {
             return (
-                <div class="form-item" onBlur={addItem} >
+                <div className="form-item" onBlur={addItem} >
                     <input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input>
                     <button className="btn-success btn-sm" onClick={addItem}>Añadir {props.text}</button>
                     <button className="close" aria-label="Close" onClick={closeForm}>
@@ -47,7 +47,7 @@ const FormAddItem = (props) => {
             )    
         } else {
             return (
-                <div class="form-item" onBlur={addItem}>
+                <div className="form-item" onBlur={addItem}>
                     <span><input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input></span>
                     <span><button className="btn-success btn-sm" onClick={addItem}><span>Añadir&nbsp;{props.text}</span></button></span>
                 </div>
