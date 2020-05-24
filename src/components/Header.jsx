@@ -1,7 +1,7 @@
 import React from 'react';
 import './../css/Header.css';
 
-import AddList from './AddListItem';
+import AddList from './FormAddItem';
 
 const Header = (props) => {
   return (

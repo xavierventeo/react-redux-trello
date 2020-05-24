@@ -2,7 +2,7 @@ import React from 'react';
 import './../css/List.css';
 
 import ListCard from './ListCard.jsx';
-import AddListItem from './AddListItem.jsx';
+import FormAddItem from './FormAddItem.jsx';
 import { getListStyle, getItemStyle } from './dndUtils'
 
 import { connect } from 'react-redux'; 
@@ -37,7 +37,7 @@ const List = ( props ) => {
       </Draggable>
 
       <div key={`addCardDiv${String(props.list.id)}`}>
-        <AddListItem listID={ props.list.id } isCard={true} text={"tarjeta"} />
+        <FormAddItem listID={ props.list.id } isCard={true} text={"tarjeta"} />
       </div>
     </div>
   )}

@@ -1,10 +1,9 @@
 import React, {useState}  from 'react';
-import './../css/AddListItem.css'
-import Button from 'react-bootstrap/Button';
+import './../css/FormAddItem.css'
 import { connect } from 'react-redux'; 
-import { addListAction, addCardAction } from './../actions/actionAddItems';
+import { addListAction, addCardAction } from '../actions/actionAddItems';
 
-const AddListItem = (props) => {
+const FormAddItem = (props) => {
     const [formOpen, setFormOpen] = useState(false);
     const [textArea, setTextArea] = useState("");
     
@@ -64,6 +63,6 @@ const mapDispatchToProps = (dispatch) => ({
     addCard : (title, listID) => addCardAction(dispatch, title, listID)
 })
 
-const connectedControls = connect(null, mapDispatchToProps)(AddListItem);
+const connectedControls = connect(null, mapDispatchToProps)(FormAddItem);
 
 export default connectedControls;
