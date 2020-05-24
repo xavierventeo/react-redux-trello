@@ -1,5 +1,4 @@
 import React from 'react';
-import './../css/ListCard.css';
 import { Draggable } from 'react-beautiful-dnd';
 import { getItemStyle } from './dndUtils'
 

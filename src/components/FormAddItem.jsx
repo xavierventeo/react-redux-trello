@@ -1,5 +1,4 @@
 import React, {useState}  from 'react';
-import './../css/FormAddItem.css'
 import { connect } from 'react-redux'; 
 import { addListAction, addCardAction } from '../actions/actionAddItems';
 
