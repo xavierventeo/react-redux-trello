@@ -55,7 +55,7 @@ const FormAddItem = (props) => {
         } else {
             return (
                 <div className="form-item" onBlur={addItem}>
-                    <span><input  className="form-control" id="text-new-card" onChange={handleChange} onChange={handleChange} onKeyUp={(event) => onKeyUpHandle(event)} autoFocus></input></span>
+                    <span><input  className="form-control" id="text-new-card" onChange={handleChange} onKeyUp={(event) => onKeyUpHandle(event)} autoFocus></input></span>
                     <span><button className="btn-success btn-sm" onClick={addItem}><span>Add&nbsp;{props.text}</span></button></span>
                 </div>
             )    
