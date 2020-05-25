@@ -24,7 +24,7 @@ The columns / list distribution is managed by responsible columns feature by Boo
 
 ```bash
 
-This project has been implemented:
+This project has been implemented using:
 • React to generate the components of the site
 • Redux to manage the state
 • Bootstrap to manage the styles and organize the lists in columns and make it responsive
