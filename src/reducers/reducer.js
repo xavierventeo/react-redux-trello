@@ -6,15 +6,15 @@ const initialState = {
       id: 1,
       title: "Pending",
       cards:[
-        { id: 1, text: 'tarea demo 1'},
-        { id: 2, text: 'tarea demo 2'}  
+        { id: 1, text: 'task demo 1'},
+        { id: 2, text: 'task demo 2'}  
       ]    
     },
     {
       id: 2,
       title: "In Progress",
       cards:[
-        { id: 3, text: 'tarea demo 3' },      
+        { id: 3, text: 'task demo 3' },      
       ]    
     },
     {
