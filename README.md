@@ -31,13 +31,14 @@ This project has been implemented using:
 • HTML5, CSS3, ES6
 • Flexbox to organize some components distribution
 • Git and GitFlow to manage the control version and process development
-• Library to manage Drag & Drop: https://github.com/atlassian/react-beautiful-dnd
+• Library to manage Drag & Drop: React-Beautiful-dnd
 
 ```
 
 Below you can watch how looks like the project:
 
-![](https://github.com/xavierventeo/react-redux-trello/blob/release/2.1.0/src/images/ProjectScreenShot.png)
+![](https://github.com/xavierventeo/react-redux-trello/blob/master/src/images/ProjectScreenShot.png)
+
 
 
 ## Release Notes
@@ -45,8 +46,9 @@ Below you can watch how looks like the project:
 ```bash
 • 1.0.0: Render a board, add list and add cards without accurate UI
 • 1.1.0: Functional release and pending to complete the UI
-• 2.0.0: Completed firs release adding Boostrap styles
-
+• 2.0.0: Completed first release adding Boostrap styles
+• 2.1.0: Added minor features and final refactors
+• 2.1.1: README review 
 ```
 
 ## Getting Started
