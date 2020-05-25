@@ -20,7 +20,7 @@ const Board = (props) => {
 
     switch (type) {
       case "LIST":
-        props.orderList(source.droppableId, destination.droppableId, source.index, destination.index);
+        props.orderList(source.index, destination.index);
         break;
       case "CARD":
         props.orderCard(source.droppableId, destination.droppableId, source.index, destination.index);

@@ -15,11 +15,18 @@ const FormAddItem = (props) => {
     }
 
     const renderAddButton = () => {
-        return <span onClick={openForm}>+ Añade otra {props.text}</span>
+        return <span onClick={openForm}>+ Add a {props.text}</span>
     };
 
     const handleChange = (event) => {
-        setFieldNewItem(event.target.value);
+        setFieldNewItem(event.target.value.trim());
+    };
+    
+    const onKeyUpHandle = (event) => {    
+        if (event.keyCode === 13 && event.target.value.trim()) {
+            setFieldNewItem(event.target.value.trim());
+            addItem();
+        }
     };
 
     const addItem = () => {
@@ -37,9 +44,9 @@ const FormAddItem = (props) => {
     const renderFormAddCard = () => {
         if (props.isCard) {
             return (
-                <div class="form-item" onBlur={addItem} >
-                    <input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input>
-                    <button className="btn-success btn-sm" onClick={addItem}>Añadir {props.text}</button>
+                <div className="form-item" onBlur={addItem} >
+                    <input  className="form-control" id="text-new-card" onChange={handleChange} onKeyUp={(event) => onKeyUpHandle(event)} autoFocus></input>
+                    <button className="btn-success btn-sm" onClick={addItem}>Add {props.text}</button>
                     <button className="close" aria-label="Close" onClick={closeForm}>
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -47,9 +54,9 @@ const FormAddItem = (props) => {
             )    
         } else {
             return (
-                <div class="form-item" onBlur={addItem}>
-                    <span><input  className="form-control" id="text-new-card" onChange={handleChange} autoFocus></input></span>
-                    <span><button className="btn-success btn-sm" onClick={addItem}><span>Añadir&nbsp;{props.text}</span></button></span>
+                <div className="form-item" onBlur={addItem}>
+                    <span><input  className="form-control" id="text-new-card" onChange={handleChange} onKeyUp={(event) => onKeyUpHandle(event)} autoFocus></input></span>
+                    <span><button className="btn-success btn-sm" onClick={addItem}><span>Add&nbsp;{props.text}</span></button></span>
                 </div>
             )    
         }
