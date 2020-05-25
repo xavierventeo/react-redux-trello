@@ -40,7 +40,6 @@ Below you can watch how looks like the project:
 ![](https://github.com/xavierventeo/react-redux-trello/blob/master/src/images/ProjectScreenShot.png)
 
 
-
 ## Release Notes
 
 ```bash
@@ -48,7 +47,7 @@ Below you can watch how looks like the project:
 • 1.1.0: Functional release and pending to complete the UI
 • 2.0.0: Completed first release adding Boostrap styles
 • 2.1.0: Added minor features and final refactors
-• 2.1.1: README review 
+• 2.1.1: README review
 ```
 
 ## Getting Started
