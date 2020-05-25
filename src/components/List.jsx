@@ -37,7 +37,7 @@ const List = ( props ) => {
       </Draggable>
 
       <div key={`addCardDiv${String(props.list.id)}`}>
-        <FormAddItem listID={ props.list.id } isCard={true} text={"tarjeta"} />
+        <FormAddItem listID={ props.list.id } isCard={true} text={"card"} />
       </div>
     </div>
   )}

@@ -15,7 +15,7 @@ const FormAddItem = (props) => {
     }
 
     const renderAddButton = () => {
-        return <span onClick={openForm}>+ Añade otra {props.text}</span>
+        return <span onClick={openForm}>+ Add a {props.text}</span>
     };
 
     const handleChange = (event) => {
@@ -46,7 +46,7 @@ const FormAddItem = (props) => {
             return (
                 <div className="form-item" onBlur={addItem} >
                     <input  className="form-control" id="text-new-card" onChange={handleChange} onKeyUp={(event) => onKeyUpHandle(event)} autoFocus></input>
-                    <button className="btn-success btn-sm" onClick={addItem}>Añadir {props.text}</button>
+                    <button className="btn-success btn-sm" onClick={addItem}>Add {props.text}</button>
                     <button className="close" aria-label="Close" onClick={closeForm}>
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -56,7 +56,7 @@ const FormAddItem = (props) => {
             return (
                 <div className="form-item" onBlur={addItem}>
                     <span><input  className="form-control" id="text-new-card" onChange={handleChange} onChange={handleChange} onKeyUp={(event) => onKeyUpHandle(event)} autoFocus></input></span>
-                    <span><button className="btn-success btn-sm" onClick={addItem}><span>Añadir&nbsp;{props.text}</span></button></span>
+                    <span><button className="btn-success btn-sm" onClick={addItem}><span>Add&nbsp;{props.text}</span></button></span>
                 </div>
             )    
         }
