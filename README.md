@@ -33,13 +33,12 @@ This project has been implemented:
 • Git and GitFlow to manage the control version and process development
 • Library to manage Drag & Drop: https://github.com/atlassian/react-beautiful-dnd
 
+```
 
 Below you can watch how looks like the project:
 
-![](./images/ProjectScreenShot.png)
+![](https://github.com/xavierventeo/react-redux-trello/blob/release/2.1.0/src/images/ProjectScreenShot.png)
 
-
-```
 
 ## Release Notes
 
@@ -68,5 +67,4 @@ Below you can watch how looks like the project:
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-
 
